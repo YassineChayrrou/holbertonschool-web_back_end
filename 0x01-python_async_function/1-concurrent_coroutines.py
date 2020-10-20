@@ -2,7 +2,7 @@
 """python async basics task 1"""
 
 
-import asyncio, random
+import asyncio
 from typing import List
 
 
@@ -14,6 +14,6 @@ async def wait_n(max_delay: int, n: int) -> List[float]:
     tasks = [asyncio.create_task(wait_random(max_delay)) for i in range(n)]
     record = []
     for task in asyncio.as_completed(tasks):
-        delay = await task
+        delay: float = await task
         record.append(delay)
     return record
