@@ -9,7 +9,7 @@ from typing import List
 async_generator = __import__('0-async_generator').async_generator
 
 
-async def async_comprehension() -> List:
+async def async_comprehension() -> Generator[float, None, None]:
     """async_comprehension: returns a list of numbers passed from async func
        using async list comprehension
     """
