@@ -6,6 +6,7 @@ BaseCaching = __import__("base_caching").BaseCaching
 
 
 class FIFOCache(BaseCaching):
+    """impossible if this is the wrong thing omg"""
     def __init__(self):
         """init method"""
         super().__init__()
@@ -17,10 +18,11 @@ class FIFOCache(BaseCaching):
         """
         if key and item:
             self.cache_data[key] = item
-        if len(self.cache_data) > self.MAX_ITEMS:
-            first = sorted(self.cache_data)
-            self.cache_data.pop(first[0])
-            print("DISCARD: {}".format(first[0]))
+            while len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                first = list(self.cache_data.keys())
+                self.cache_data.pop(first[0])
+                print("DISCARD: {}".format(first[0]))
+        pass
 
     def get(self, key):
         """returns the value in self.cache_data linked to key"""
