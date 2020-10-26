@@ -18,11 +18,10 @@ class FIFOCache(BaseCaching):
         """
         if key and item:
             self.cache_data[key] = item
-            while len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                first = list(self.cache_data.keys())
-                self.cache_data.pop(first[0])
-                print("DISCARD: {}".format(first[0]))
-        pass
+        while len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            first = list(self.cache_data.keys())
+            self.cache_data.pop(first[0])
+            print("DISCARD: {}".format(first[0]))
 
     def get(self, key):
         """returns the value in self.cache_data linked to key"""
