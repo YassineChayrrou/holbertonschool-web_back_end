@@ -17,13 +17,12 @@ class LIFOCache(BaseCaching):
            Deletes first element in self.cache_data if elements count is bigger
            then MAX_ITEMS
         """
-        if key and item:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                last = sorted(self.cache_data).pop()
-                self.cache_data[key] = item
-                print("DISCARD: {}".format(last))
-            else:
-                self.cache_data[key] = item
+        if key is None or item is None:
+            return
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            my_item = self.cache_data.popitem()
+            print(f"DISCARD: {my_item[0]}")
+        self.cache_data[key] = item
 
     def get(self, key):
         """returns the value in self.cache_data linked to key"""
