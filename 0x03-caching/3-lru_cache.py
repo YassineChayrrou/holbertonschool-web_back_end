@@ -20,13 +20,13 @@ class LRUCache(BaseCaching):
         """
         if key is None or item is None:
             return
-        self.cache_data[key] = item
         if key not in self.lru_cache:
             self.lru_cache.append(key)
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             my_key = self.lru_cache.pop(0)
             self.cache_data.pop(my_key)
             print(f"Discard: {my_key}")
+        self.cache_data[key] = item
 
     def get(self, key):
         """returns the value in self.cache_data linked to key"""
