@@ -20,8 +20,6 @@ class LRUCache(BaseCaching):
         """
         if key is None or item is None:
             return
-        print(self.cache_data)
-        print(self.lru_cache)
         self.cache_data[key] = item
         if key not in self.lru_cache:
             self.lru_cache.append(key)
