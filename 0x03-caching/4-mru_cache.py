@@ -15,8 +15,8 @@ class MRUCache(BaseCaching):
 
     def put(self, key, item):
         """Assigns item value to key in self.cache_data
-           Deletes first element in self.cache_data if elements count is bigger
-           then MAX_ITEMS
+           Deletes element in self.cache_data using MRU algorithm if item count
+           is bigger then MAX_ITEMS
         """
         if key is None or item is None:
             return
