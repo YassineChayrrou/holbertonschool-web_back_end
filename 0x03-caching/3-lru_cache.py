@@ -25,7 +25,6 @@ class LRUCache(BaseCaching):
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             my_key = self.lru_cache.pop(0)
             self.cache_data.pop(my_key)
-            print(f"Discard: {my_key}")
         self.cache_data[key] = item
 
     def get(self, key):
