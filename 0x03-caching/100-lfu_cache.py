@@ -22,12 +22,14 @@ class LFUCache(BaseCaching):
             return
         if key not in self.lfu_cache:
             self.lfu_cache[key] = 0
+        self.cache_data[key] = item
+        lfu_backup = self.lfu_cache.popitem()
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             lfu_key = min(self.lfu_cache, key=lambda k: self.lfu_cache[k])
             self.lfu_cache.pop(lfu_key)
             self.cache_data.pop(lfu_key)
             print(f"DISCARD: {lfu_key}")
-        self.cache_data[key] = item
+        self.lfu_cache[lfu_backup[0]] = lfu_backup[1]
 
     def get(self, key):
         """returns the value in self.cache_data linked to key"""
