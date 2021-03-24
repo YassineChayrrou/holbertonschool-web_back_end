@@ -5,7 +5,7 @@ Deletion-resilient hypermedia pagination
 
 import csv
 import math
-from typing import List
+from typing import List, Dict
 
 
 class Server:
@@ -40,5 +40,25 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        assert self.indexed_dataset()[index]
-        return {}
+        """Returns dict formatted according to HATEOS"""
+        assert type(index) is int
+        assert type(page_size) is int
+        assert index >= 0
+        assert index <= len(self.dataset())
+        next_index = index
+        hypermedia_data = []
+        for i in range(page_size):
+            try:
+                hypermedia_data.append(self.indexed_dataset()[next_index])
+                # print(f"next_index : {next_index} is valid")
+            except KeyError:
+                # print(f"next_index : {next_index} is not valid")
+                next_index += 1
+            next_index += 1
+        # print("loop ends here!!!!")
+        return {
+            'index': index,
+            'data': hypermedia_data,
+            'next_index': next_index,
+            'page_size': page_size
+        }
