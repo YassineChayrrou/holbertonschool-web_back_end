@@ -1,27 +1,42 @@
-# 0x06. Basic authentication
+# Simple API
 
-In this project we will learn the authentication process means and implement a **Basic Authentication** on a simple API.
+Simple HTTP API for playing with `User` model.
 
-Note: that in industry we don't use our own authentication system instead we use module or framework which is tested, reliable, secure and maintained.
 
-## Resources:
+## Files
 
-links to read or watch:
-- <a href="https://www.youtube.com/watch?v=501dpx2IjGY" target="_blank">REST API Authentication Mechanisms</a>
-- <a href="https://docs.python.org/3.7/library/base64.html" target="_blank">Base64 in Python</a>
-- <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization" target="_blank">HTTP header Authotization</a>
-- <a href="https://palletsprojects.com/p/flask/" target="_blank">Flask</a>
-- <a href="https://en.wikipedia.org/wiki/Base64" target="_blank">Base64 - concept</a>
+### `models/`
 
-## Learning Objectives:
+- `base.py`: base of all models of the API - handle serialization to file
+- `user.py`: user model
 
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-- What authentication means
-- What Base64 is
-- How to encode a string in Base64
-- What Basic authentication means
-- How to send the Authorization header
+### `api/v1`
 
-## Notes
+- `app.py`: entry point of the API
+- `views/index.py`: basic endpoints of the API: `/status` and `/stats`
+- `views/users.py`: all users endpoints
 
-...
+
+## Setup
+
+```
+$ pip3 install -r requirements.txt
+```
+
+
+## Run
+
+```
+$ API_HOST=0.0.0.0 API_PORT=5000 python3 -m api.v1.app
+```
+
+
+## Routes
+
+- `GET /api/v1/status`: returns the status of the API
+- `GET /api/v1/stats`: returns some stats of the API
+- `GET /api/v1/users`: returns the list of users
+- `GET /api/v1/users/:id`: returns an user based on the ID
+- `DELETE /api/v1/users/:id`: deletes an user based on the ID
+- `POST /api/v1/users`: creates a new user (JSON parameters: `email`, `password`, `last_name` (optional) and `first_name` (optional))
+- `PUT /api/v1/users/:id`: updates an user based on the ID (JSON parameters: `last_name` and `first_name`)
