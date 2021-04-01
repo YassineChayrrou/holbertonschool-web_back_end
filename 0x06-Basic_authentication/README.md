@@ -1,4 +1,27 @@
-# Simple API
+# 0x06 Basic authentication
+
+In this project, we will learn what the authentication process means and implement a Basic Authentication on a simple API.
+Note: in the industry we use a model or framework that do that which is reliable, secure and maintained by experts in the field all to develop a safe to use application with less risk of having security vulnerability.
+
+## Learning Resources:
+
+- <a href="" target="_blank">REST API Authentication Mechanisms</a>
+- <a href="" target="_blank">Base64 in Python</a>
+- <a href="" target="_blank">HTTP header Authorization</a>
+- <a href="" target="_blank">Flask</a>
+- <a href="" target="_blank">Base64 - concept</a>
+
+## Learning Objectives:
+
+
+- What authentication means
+- What Base64 is
+- How to encode a string in Base64
+- What Basic authentication means
+- How to send the Authorization header
+
+
+### Simple API
 
 Simple HTTP API for playing with `User` model.
 
