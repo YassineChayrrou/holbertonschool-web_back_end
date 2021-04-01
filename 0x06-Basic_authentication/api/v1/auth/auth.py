@@ -41,3 +41,11 @@ class Auth:
         """ Public method current_user
         """
         return None
+
+
+class BasicAuth(Auth):
+    """ BasicAuth class
+    """
+
+    def __init__(self):
+        pass
