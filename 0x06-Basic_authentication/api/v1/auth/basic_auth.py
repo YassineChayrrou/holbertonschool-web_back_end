@@ -71,6 +71,8 @@ class BasicAuth(Auth):
             return None
         if user_pwd is None or type(user_pwd) is not str:
             return None
+        if not DATA:
+            return None
         users = User.search({"email": user_email})
         if len(users) < 1:
             return None
