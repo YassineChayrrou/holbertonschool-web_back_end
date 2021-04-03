@@ -19,10 +19,21 @@ class Auth:
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ Public method require_auth
         """
+        regex_excluded_paths = []
+
         if path is None:
             return True
+
         if not excluded_paths:
             return True
+
+        for excluded_path in excluded_paths:
+            if excluded_path[-1] == "*":
+                regex_excluded_paths.append(excluded_path[:-1])
+        for i in regex_excluded_paths:
+            if i in path:
+                return False
+
         if path[-1] != '/':
             path = path + '/'
         if path not in excluded_paths:
@@ -41,11 +52,3 @@ class Auth:
         """ Public method current_user
         """
         return None
-
-
-class BasicAuth(Auth):
-    """ BasicAuth class
-    """
-
-    def __init__(self):
-        pass
