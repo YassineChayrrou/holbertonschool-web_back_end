@@ -44,7 +44,7 @@ class BasicAuth(Auth):
             base64_decode_bytes = base64.b64decode(base64_authorization_header)
             base64_decode_text = base64_decode_bytes.decode('ascii')
             return base64_decode_text
-        except binascii.Error:
+        except (binascii.Error, UnicodeDecodeError):
             return None
 
     def extract_user_credentials(
@@ -81,3 +81,14 @@ class BasicAuth(Auth):
         if password_validation is True:
             return current_user
         return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """ Returns current user instance if authorized
+        """
+        auth_value = self.authorization_header(request)
+        b64_auth = self.extract_base64_authorization_header(auth_value)
+        b64_auth_decoded = self.decode_base64_authorization_header(b64_auth)
+        credentials = self.extract_user_credentials(b64_auth_decoded)
+        return self.user_object_from_credentials(credentials[0], credentials[1])
+
+
