@@ -3,6 +3,10 @@
 
 
 from .auth import Auth
+from typing import TypeVar
+from models.user import User
+from models.base import DATA
+from flask import jsonify
 import base64
 import binascii
 
@@ -56,3 +60,22 @@ class BasicAuth(Auth):
             return None, None
         else:
             return tuple(decoded_base64_authorization_header.split(":"))
+
+    def user_object_from_credentials(
+            self,
+            user_email: str,
+            user_pwd: str) -> TypeVar('User'):
+        """ Returns User instancebased on his email and password
+        """
+        if user_email is None or type(user_email) is not str:
+            return None
+        if user_pwd is None or type(user_pwd) is not str:
+            return None
+        users = User.search({"email": user_email})
+        if len(users) < 1:
+            return None
+        current_user = users[0]
+        password_validation = current_user.is_valid_password(user_pwd)
+        if password_validation is True:
+            return current_user
+        return None
