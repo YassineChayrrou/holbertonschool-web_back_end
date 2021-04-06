@@ -5,11 +5,11 @@ Note: in the industry we use a model or framework that do that which is reliable
 
 ## Learning Resources:
 
-- <a href="" target="_blank">REST API Authentication Mechanisms</a>
-- <a href="" target="_blank">Base64 in Python</a>
-- <a href="" target="_blank">HTTP header Authorization</a>
-- <a href="" target="_blank">Flask</a>
-- <a href="" target="_blank">Base64 - concept</a>
+- <a href="https://www.youtube.com/watch?v=501dpx2IjGY" target="_blank">REST API Authentication Mechanisms</a>
+- <a href="https://docs.python.org/3.7/library/base64.html" target="_blank">Base64 in Python</a>
+- <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization" target="_blank">HTTP header Authorization</a>
+- <a href="https://palletsprojects.com/p/flask/" target="_blank">Flask</a>
+- <a href="https://en.wikipedia.org/wiki/Base64" target="_blank">Base64 - concept</a>
 
 ## Learning Objectives:
 
