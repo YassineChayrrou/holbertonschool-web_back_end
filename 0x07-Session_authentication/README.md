@@ -1,4 +1,5 @@
 # 0x07. Session authentication
+
 In this project, we will implement a Session Authentication from scratch without the use of other modules to implement it.
 
 Note: in industry we use modules and/or frameworks to implement session authentication systems because of security reasons and production time as it is easier to use already developed and maintained system then loosing time making you own!
@@ -19,3 +20,7 @@ At the end of this project, we are expected to be able to explain to anyone, wit
 - What Cookies are
 - How to send Cookies
 - How to parse Cookies
+
+## Notes:
+
+check **SIMPLE API** documentation on prior project README.md <a href="https://github.com/YassineChayrrou/holbertonschool-web_back_end/tree/main/0x06-Basic_authentication#readme" target="_blank">here</a>
