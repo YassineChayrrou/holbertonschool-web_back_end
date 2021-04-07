@@ -38,10 +38,25 @@ class SessionAuth(Auth):
         return user_id
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """ Description
+        """ Returns current_user User instance
         """
         if request is None:
             return None
         session_id = self.session_cookie(request)
         user_id = self.user_id_for_session_id(session_id)
         return User.get(user_id)
+
+    def destroy_session(self, request=None) -> bool:
+        """  Destroys a session
+        """
+        if request is None:
+            return False
+        session_id = self.session_cookie(request)
+        if not session_id:
+            return False
+        user_id = self.user_id_for_session_id(session_id)
+        if not user_id:
+            return False
+        self.user_id_by_session_id.pop(session_id)
+        print(session_id)
+        return True
