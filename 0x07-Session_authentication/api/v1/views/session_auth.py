@@ -29,7 +29,6 @@ def login():
         session_id = auth.create_session(current_user.id)
         response = jsonify(current_user.to_json())
         response.set_cookie(getenv('SESSION_NAME'), str(session_id))
-        print(session_id)
         return response
 
 
