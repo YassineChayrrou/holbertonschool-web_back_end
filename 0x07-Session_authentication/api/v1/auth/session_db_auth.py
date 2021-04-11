@@ -36,14 +36,19 @@ class SessionDBAuth(SessionExpAuth):
         session_list = UserSession.search({'session_id': session_id})
         if len(session_list) < 1:
             return None
-        current_session = session_list[0]
-        local_session_dict = self.user_id_by_session_id
-        created_at = local_session_dict.get(session_id).get('created_at')
+        current_session_user_id = session_list[0].user_id
+        session_dictionary = self.user_id_by_session_id.get(session_id)
+        if session_dictionary is None:
+            return None
+        if self.session_duration <= 0:
+            return session_dictionary.get('user_id')
+        created_at = session_dictionary.get('created_at')
+        if created_at is None:
+            return None
         expiration = created_at + timedelta(seconds=self.session_duration)
         if expiration < datetime.now():
-            current_session.remove()
             return None
-        return current_session.user_id
+        return current_session_user_id
 
     def destroy_session(self, request=None):
         """ Overloads method in SessionExpAuth
