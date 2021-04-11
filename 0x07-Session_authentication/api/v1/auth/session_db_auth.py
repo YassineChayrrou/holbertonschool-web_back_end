@@ -33,22 +33,19 @@ class SessionDBAuth(SessionExpAuth):
         """
         if session_id is None:
             return None
-        session_list = UserSession.search({'session_id': session_id})
-        if len(session_list) < 1:
+        UserSession.load_from_file()
+        user_session = UserSession.search({'session_id': session_id})
+        if not user_session:
             return None
-        current_session_user_id = session_list[0].user_id
+        session = user_session[0]
         session_dictionary = self.user_id_by_session_id.get(session_id)
-        if session_dictionary is None:
+        if not session_dictionary:
             return None
-        if self.session_duration <= 0:
-            return session_dictionary.get('user_id')
         created_at = session_dictionary.get('created_at')
-        if created_at is None:
-            return None
         expiration = created_at + timedelta(seconds=self.session_duration)
         if expiration < datetime.now():
             return None
-        return current_session_user_id
+        return session.user_id
 
     def destroy_session(self, request=None):
         """ Overloads method in SessionExpAuth
