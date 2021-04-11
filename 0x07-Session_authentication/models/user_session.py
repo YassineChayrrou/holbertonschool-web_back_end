@@ -9,7 +9,8 @@ from models.base import Base
 class UserSession(Base):
     """ UserSession class
     """
-    def __init__(self, *args:list, **kwargs: dict):
+
+    def __init__(self, *args: list, **kwargs: dict):
         """ UserSession constructor
         """
         super().__init__(*args, **kwargs)
