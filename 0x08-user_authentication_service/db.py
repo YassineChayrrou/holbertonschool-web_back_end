@@ -52,14 +52,10 @@ class DB:
     def update_user(self, user_id: int, **kwargs) -> None:
         """ Updates user based on id and commit changes to DB
         """
-        if type(user_id) is not int or not kwargs:
-            raise ValueError
-        my_target = {'id': user_id}
-        user = self.find_user_by(**my_target)
-        update = next(iter(kwargs.items()))
-        if update:
-            if not hasattr(user, update[0]):
+        user = self.find_user_by(id=user_id)
+        for key, value in kwargs.items():
+            if not hasattr(user, key):
                 raise ValueError
-        setattr(user, update[0], update[1])
+            setattr(user, key, value)
         self._session.commit()
         return None
