@@ -49,7 +49,7 @@ class DB:
             raise NoResultFound
         return user
 
-    def update_user(self, user_id: int, **kwargs) -> User:
+    def update_user(self, user_id: int, **kwargs) -> None:
         """ Updates user based on id and commit changes to DB
         """
         if type(user_id) is not int:
