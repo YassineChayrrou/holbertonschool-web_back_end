@@ -12,6 +12,8 @@ This project is concerned about understanding the intricacies of user authentica
 - <a href="https://flask.palletsprojects.com/en/1.1.x/quickstart/" target="_blank">Flask documentation</a>
 - <a href="https://requests.kennethreitz.org/en/master/user/quickstart/" target="_blank">Request module</a>
 - <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_blank">HTTP status codes</a>
+- <a href="https://docs.sqlalchemy.org/en/13/orm/tutorial.html#declare-a-mapping" target="_blank">sqlalchemy 1.3</a>
+    - Note: i used sqlalchemy 1.4 for this project but referenced the documentation on version 1.3 in order to make sure the project pass the checker version so all in all this would work fine on sqlalchemy version 1.3
 
 ## Learning Objectives:
 
