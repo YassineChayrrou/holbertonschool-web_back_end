@@ -48,3 +48,18 @@ class DB:
         if user is None:
             raise NoResultFound
         return user
+
+    def update_user(self, user_id: int, **kwargs) -> User:
+        """ Updates user based on id and commit changes to DB
+        """
+        if type(user_id) is not int:
+            return None
+        my_target = {'id': user_id}
+        user = self.find_user_by(**my_target)
+        update = next(iter(kwargs.items()))
+        if update:
+            if not hasattr(user, update[0]):
+                raise ValueError
+        setattr(user, update[0], update[1])
+        self._session.commit()
+        return None
