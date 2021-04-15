@@ -50,13 +50,14 @@ class DB:
         return user
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        """ Updates user based on id and commit changes to DB """
-        user = self.find_user_by(id=user_id)
+        """ Updates user based on id and commit changes to DB
+        """
+        my_user = self.find_user_by(id=user_id)
 
         for key in kwargs:
-            if hasattr(user, key) is False:
+            if hasattr(my_user, key) is False:
                 raise ValueError
-            setattr(user, key, kwargs[key])
+            setattr(my_user, key, kwargs[key])
 
         self._session.commit()
         return None
