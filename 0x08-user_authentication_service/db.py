@@ -52,7 +52,7 @@ class DB:
     def update_user(self, user_id: int, **kwargs) -> None:
         """ Updates user based on id and commit changes to DB
         """
-        if type(user_id) is not int:
+        if type(user_id) is not int or not kwargs:
             raise ValueError
         my_target = {'id': user_id}
         user = self.find_user_by(**my_target)
