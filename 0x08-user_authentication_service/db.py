@@ -53,7 +53,7 @@ class DB:
         """ Updates user based on id and commit changes to DB
         """
         if type(user_id) is not int:
-            return None
+            raise ValueError
         my_target = {'id': user_id}
         user = self.find_user_by(**my_target)
         update = next(iter(kwargs.items()))
