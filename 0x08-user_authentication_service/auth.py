@@ -64,8 +64,11 @@ class Auth:
             - True or False
         """
         if email and password:
-            user = self._db.find_user_by(email=email)
-            if user is None:
+            try:
+                user = self._db.find_user_by(email=email)
+                if user is None:
+                    return False
+            except NoResultFound:
                 return False
             user_pwd = user.hashed_password
             password = bytes(password.encode())
