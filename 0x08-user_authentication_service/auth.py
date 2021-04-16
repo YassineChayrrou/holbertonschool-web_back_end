@@ -28,6 +28,17 @@ def _hash_password(password: str) -> bytes:
     return hashed_passwd
 
 
+def _generate_uuid() -> str:
+    """
+    _generate_uuid - generates a new UUID
+    Args:
+        - takes no arguments
+    Return:
+        - UUID string representation
+    """
+    return str(uuid.uuid4())
+
+
 class Auth:
     """Auth class to interact with the authentication database.
     """
@@ -75,14 +86,3 @@ class Auth:
             except Exception as e:
                 return False
         return False
-
-    @property
-    def _generate_uuid(self) -> str:
-        """
-        _generate_uuid - generates a new UUID
-        Args:
-            - takes no arguments
-        Return:
-            - UUID string representation
-        """
-        return str(uuid.uuid4())
