@@ -66,13 +66,11 @@ class Auth:
         if email and password:
             try:
                 user = self._db.find_user_by(email=email)
-                if user is None:
-                    return False
-            except NoResultFound:
+                user_pwd = user.hashed_password
+                password = bytes(password.encode())
+                validation = bcrypt.checkpw(password, user_pwd)
+                if validation:
+                    return True
+            except Exception as e:
                 return False
-            user_pwd = user.hashed_password
-            password = bytes(password.encode())
-            validation = bcrypt.checkpw(password, user_pwd)
-            if validation:
-                return True
         return False
