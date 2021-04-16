@@ -32,7 +32,13 @@ class DB:
         return self.__session
 
     def add_user(self, email: str, hashed_password: str) -> User:
-        """ adds User to database
+        """
+        add_user - adds User to database and commit changes
+        Args:
+            - email: user email of string type
+            - hashed_password of string type
+        Return:
+            - User instance
         """
         new_user = User(email=email, hashed_password=hashed_password)
         self._session.add(new_user)
@@ -40,7 +46,14 @@ class DB:
         return new_user
 
     def find_user_by(self, **kwargs) -> User:
-        """ Returns user in DB
+        """
+        find_user_by - Finds a user using keyword as argument
+        Args:
+            - kwargs: dictionary -> dict[(user_attribute)] = (attribute_value)
+                + Format: user_attribute=attribute_value
+        Return:
+            - user instance if exists
+            - raises NoResultFound or InvalidRequestError
         """
         try:
             user = self.__session.query(User).filter_by(**kwargs).first()
@@ -51,9 +64,14 @@ class DB:
         return user
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        """ Updates user based on id and commit changes to DB
-            arguments user_id, kwargs
-            if attribute does not exist raises ValueError
+        """
+        update_user - updates user in DataBase and commit changes to session
+        Args:
+            - user_id: int, checks for user.id in DB
+            - kwargs: dictionary -> dict[(user_attribute)] = (attribute_value)
+                + Format: user_attrib=attribute_value
+        Return:
+            - None
         """
         my_user = self.find_user_by(id=user_id)
 
@@ -61,6 +79,5 @@ class DB:
             if hasattr(my_user, key) is False:
                 raise ValueError
             setattr(my_user, key, kwargs[key])
-
         self._session.commit()
         return None
