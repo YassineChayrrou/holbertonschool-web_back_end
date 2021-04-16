@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""DB module for CRUD operations using sqlalchemy
+""" DB module
+    manages CRUD operations on local sqlite database using sqlalchemy
+    main imports:
+        - sqlalchemy pip3 installed
+        - user: local module in file 'user.py'
+    module name 'db'
 """
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -11,7 +16,14 @@ from sqlalchemy.orm.exc import NoResultFound
 
 
 class DB:
-    """DB class that manages CRUD operations
+    """
+    DB class:
+        - Role: manages CRUD operations in DB
+        - class methods:
+            + _session
+            + add_user
+            + find_user_by
+            + update_user
     """
 
     def __init__(self) -> None:

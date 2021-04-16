@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-""" User Module"""
+""" User Module
+    contains object declaration of User to be set as DB table
+    main imports:
+        - sqlalchemy from pip3
+    module name 'user'
+"""
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
@@ -9,7 +14,10 @@ Base = declarative_base()
 
 
 class User(Base):
-    """ User class SQLAlchemy model
+    """
+    User class SQLAlchemy model
+    inherits from Base
+    represents users table in Database
     """
     __tablename__ = 'users'
 
