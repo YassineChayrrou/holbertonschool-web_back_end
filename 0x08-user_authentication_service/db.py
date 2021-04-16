@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""DB module
+"""DB module for CRUD operations using sqlalchemy
 """
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -11,7 +11,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 
 class DB:
-    """DB class
+    """DB class that manages CRUD operations
     """
 
     def __init__(self) -> None:
@@ -40,7 +40,8 @@ class DB:
         return new_user
 
     def find_user_by(self, **kwargs) -> User:
-        """ Returns user in DB"""
+        """ Returns user in DB
+        """
         try:
             user = self.__session.query(User).filter_by(**kwargs).first()
         except InvalidRequestError:
@@ -51,6 +52,8 @@ class DB:
 
     def update_user(self, user_id: int, **kwargs) -> None:
         """ Updates user based on id and commit changes to DB
+            arguments user_id, kwargs
+            if attribute does not exist raises ValueError
         """
         my_user = self.find_user_by(id=user_id)
 
