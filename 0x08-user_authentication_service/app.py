@@ -12,11 +12,17 @@ auth = Auth()
 
 @app.route("/", methods=['GET'])
 def index():
+    """
+    index - returns json and the end point '/'
+    """
     return jsonify({"message": "Bienvenue"})
 
 
 @app.route("/users", methods=['POST'])
 def users():
+    """
+    users - flask app implementation of user registration in auth module
+    """
     email = request.form.get('email')
     password = request.form.get('password')
     try:
@@ -31,6 +37,9 @@ def users():
 
 @app.route("/sessions", methods=['POST'])
 def login():
+    """
+    login - session setup and implementation in flask app end point /sessions
+    """
     email = request.form.get('email')
     password = request.form.get('password')
     is_valid = auth.valid_login(email, password)
