@@ -2,7 +2,7 @@
 """ Flask app module """
 
 
-from flask import Flask, jsonify, request
+from flask import abort, Flask, jsonify, request
 from auth import Auth
 
 
@@ -27,6 +27,19 @@ def users():
         "email": email,
         "message": "user created"
         })
+
+
+@app.route("/sessions", methods=['POST'])
+def login():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    is_valid = auth.valid_login(email, password)
+    if is_valid:
+        session_id = auth.create_session(email)
+        response = jsonify({"email": email, "message": "logged in"})
+        response.set_cookie('session_id', session_id)
+        return response
+    return abort(401)
 
 
 if __name__ == "__main__":
