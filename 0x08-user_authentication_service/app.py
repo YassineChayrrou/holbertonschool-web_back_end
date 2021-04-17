@@ -49,7 +49,7 @@ def login():
         response.set_cookie('session_id', session_id)
         return response
     else:
-        return abort(401)
+        abort(401)
 
 
 if __name__ == "__main__":
