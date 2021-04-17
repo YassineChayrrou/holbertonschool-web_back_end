@@ -103,3 +103,19 @@ class Auth:
         user.session_id = session_id
         self._db._session.commit()
         return session_id
+
+    def get_user_from_session_id(self, session_id: str) -> User:
+        """
+        get_user_from_session_id - gets user for requested session
+        Args:
+            - session_id: str, user session ID
+        Return:
+            - User instance corresponding to session ID
+        """
+        if session_id is None:
+            return None
+        try:
+            user = self._db.find_user_by(session_id=session_id)
+            return user
+        except NoResultFound:
+            return None
