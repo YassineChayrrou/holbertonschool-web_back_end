@@ -2,7 +2,7 @@
 """ Flask app module """
 
 
-from flask import abort, Flask, jsonify, request
+from flask import abort, Flask, jsonify, redirect, request, url_for
 from auth import Auth
 
 
@@ -50,6 +50,21 @@ def login():
         return response
     else:
         abort(401)
+
+
+@app.route("/sessions", methods=['DELETE'])
+def logout():
+    """
+    logout - logout implementation destroys current user session
+    """
+    session_id = request.cookies.get('session_id')
+    current_user = AUTH.get_user_from_session_id(session_id)
+    if current_user:
+        user_id = current_user.id
+        AUTH.destroy_session(user_id)
+        return redirect(url_for('index'))
+    else:
+        abort(403)
 
 
 if __name__ == "__main__":
