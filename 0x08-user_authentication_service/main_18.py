@@ -7,7 +7,7 @@ email = 'bob@bob.com'
 password = 'MyPwdOfBob'
 auth = Auth()
 
-auth.register_user(email, password)
+user = auth.register_user(email, password)
 print("User registered!")
 
 
@@ -27,3 +27,6 @@ try:
     print("password updated!")
 except ValueError:
     print("Token is not verified, Try again")
+
+print("checking...")
+print(f"reset_token is set to... {user.reset_token}")
