@@ -166,5 +166,6 @@ class Auth:
             password = _hash_password(password)
             user.password = password
             self._db._session.commit()
+            return None
         except Exception as e:
             raise ValueError
