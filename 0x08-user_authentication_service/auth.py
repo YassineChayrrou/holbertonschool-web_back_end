@@ -75,17 +75,17 @@ class Auth:
         Return:
             - True or False
         """
-        if email and password:
-            try:
-                user = self._db.find_user_by(email=email)
-                user_pwd = user.hashed_password
-                password = bytes(password.encode())
-                validation = bcrypt.checkpw(password, user_pwd)
-                if validation:
-                    return True
-            except Exception as e:
+        try:
+            user = self._db.find_user_by(email=email)
+            if not user:
                 return False
-        return False
+            password = password.encode('utf-8')
+            validation = bcrypt.checkpw(password, user.hashed_password)
+            if validation:
+                return True
+            return False
+        except Exception as e:
+            return False
 
     def create_session(self, email: str):
         """
