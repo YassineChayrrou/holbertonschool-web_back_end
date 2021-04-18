@@ -62,8 +62,7 @@ class Auth:
                 raise ValueError(f"User {email} already exists")
         except (AttributeError, NoResultFound):
             password = _hash_password(password)
-            registered_user = self._db.add_user(email, password)
-            return registered_user
+            return self._db.add_user(email, password)
 
     def valid_login(self, email: str, password: str) -> bool:
         """
