@@ -108,7 +108,7 @@ class Auth:
         """
         get_user_from_session_id - gets user for requested session
         Args:
-            - session_id: str, user session ID
+            - session_id: str, user sessionID
         Return:
             - User instance corresponding to session ID
         """
