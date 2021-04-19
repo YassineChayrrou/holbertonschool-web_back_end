@@ -8,20 +8,13 @@
 """
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import InvalidRequestError
 from user import Base, User
 
 
 class DB:
-    """
-    DB class:
-        - Role: manages CRUD operations in DB
-        - class methods:
-            + _session
-            + add_user
-            + find_user_by
-            + update_user
+    """DB class
     """
 
     def __init__(self) -> None:
@@ -34,10 +27,7 @@ class DB:
 
     @property
     def _session(self):
-        """ Memoized session object
-            initiate a session if not exists
-            Returns:
-                - Session
+        """Memoized session object
         """
         if self.__session is None:
             DBSession = sessionmaker(bind=self._engine)
