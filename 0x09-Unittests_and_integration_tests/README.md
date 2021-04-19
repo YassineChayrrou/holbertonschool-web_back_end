@@ -15,11 +15,11 @@ This project will focus on creating unittests and integration tests for differen
 ## Resources:
 
 **read or watch**
-<a href="https://docs.python.org/3/library/unittest.html" target="_blank">unittest — Unit testing framework</a>
-<a href="https://docs.python.org/3/library/unittest.mock.html" target="_blank">unittest.mock — mock object library</a>
-<a href="https://stackoverflow.com/questions/11836436/how-to-mock-a-readonly-property-with-mock" target="_blank">How to mock a readonly property with mock?</a>
-<a href="https://pypi.org/project/parameterized/" target="_blank">parameterized</a>
-<a href="https://en.wikipedia.org/wiki/Memoization" target="_blank">Memoization</a>
+- <a href="https://docs.python.org/3/library/unittest.html" target="_blank">unittest — Unit testing framework</a>
+- <a href="https://docs.python.org/3/library/unittest.mock.html" target="_blank">unittest.mock — mock object library</a>
+- <a href="https://stackoverflow.com/questions/11836436/how-to-mock-a-readonly-property-with-mock" target="_blank">How to mock a readonly property with mock?</a>
+- <a href="https://pypi.org/project/parameterized/" target="_blank">parameterized</a>
+- <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank">Memoization</a>
 
 ## Objectives:
 
@@ -29,4 +29,7 @@ At the end of this project,we are expected to be able to explain to anyone, with
 
 ## Requirements:
 
-`unittest` a Unit testing framework
+Unittest : a python unit test framework
+
+## Notes:
+...
