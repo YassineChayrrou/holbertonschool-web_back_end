@@ -8,10 +8,11 @@ import requests
 
 URL = 'http://0.0.0.0:5000'
 
+
 def register_user(email: str, password: str) -> None:
     """
     Test for /users end-point
-    checks if new user is registered 
+    checks if new user is registered
     """
     payload = {
             'email': email,
@@ -32,6 +33,7 @@ def log_in_wrong_password(email: str, password: str) -> None:
     req = requests.post(URL + '/sessions', data=payload)
     assert req.status_code == 401
 
+
 def log_in(email: str, password: str) -> str:
     """
     Test successful login on /sessions end-point
@@ -41,8 +43,9 @@ def log_in(email: str, password: str) -> str:
             'password': password
             }
     req = requests.post(URL + '/sessions', data=payload)
-    assert req.status_code == 200 
+    assert req.status_code == 200
     return req.cookies.get('session_id')
+
 
 def profile_unlogged() -> None:
     """
@@ -50,6 +53,7 @@ def profile_unlogged() -> None:
     """
     req = requests.get(URL + '/profile')
     assert req.status_code == 403
+
 
 def profile_logged(session_id: str) -> None:
     """
@@ -59,6 +63,7 @@ def profile_logged(session_id: str) -> None:
     req = requests.get(URL + '/profile', cookies=session_cookie)
     assert req.status_code == 200
 
+
 def log_out(session_id: str) -> None:
     """
     Test Session_id deleted and user is logged out on '/sessions' end-point
@@ -66,6 +71,7 @@ def log_out(session_id: str) -> None:
     session_cookie = {'session_id': session_id}
     req = requests.delete(URL + '/sessions', cookies=session_cookie)
     assert req.status_code == 200
+
 
 def reset_password_token(email: str) -> str:
     """
@@ -79,6 +85,7 @@ def reset_password_token(email: str) -> str:
     reset_token = json.loads(req.content).get('reset_token')
     return reset_token
 
+
 def update_password(email: str, reset_token: str, new_password: str) -> None:
     """
     Test user update password on '/reset_password' end-point
@@ -90,8 +97,6 @@ def update_password(email: str, reset_token: str, new_password: str) -> None:
             }
     req = requests.put(URL + '/reset_password', data=payload)
     assert req.status_code == 200
-
-
 
 
 EMAIL = "guillaume@holberton.io"
