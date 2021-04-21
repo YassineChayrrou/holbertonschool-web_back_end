@@ -46,12 +46,15 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-    """ TestMemoise class """
+    """ TestMemoise class for unittest
+    """
+
     def test_memoize(self):
-        """ test_memoize method
+        """ test_memoize method tests an object within main class
+            uses patch.object to mock an object within TestMemoize
         """
         class TestClass:
-            """"""
+
             def a_method(self):
                 return 42
 
