@@ -53,7 +53,7 @@ class Cache:
         Return:
             - value: str, string format requested key
         """
-        value = str(self._redis.get(key))
+        value = self.get(key, str)
         return value
 
     def get_int(self, key: int) -> int:
@@ -64,5 +64,5 @@ class Cache:
         Return:
             - value:int, integer foramt of requested key
         """
-        value = int(self._redis.get(key))
+        value = self.get(key, int)
         return value
