@@ -30,7 +30,8 @@ class Cache:
         self._redis.mset({random_key: data})
         return random_key
 
-    def get(self, key: str, fn: Callable):
+    def get(self, key: str,
+            fn: Callable = None) -> Union[str, bytes, int, float]:
         """
         get - gets data from redis and recovers its original type
         Args:
@@ -42,4 +43,26 @@ class Cache:
         value = self._redis.get(key)
         if fn:
             return fn(value)
+        return value
+
+    def get_str(self, key: str) -> str:
+        """
+        get_str - returns a string value from redis db
+        Args:
+            - value: str, key searchable in redis
+        Return:
+            - value: str, string format requested key
+        """
+        value = str(self._redis.get(key))
+        return value
+
+    def get_int(self, key: int) -> int:
+        """
+        get_int - returns an integer value from redis db
+        Args:
+            - key: int, key searchable in redis
+        Return:
+            - value:int, integer foramt of requested key
+        """
+        value = int(self._redis.get(key))
         return value
