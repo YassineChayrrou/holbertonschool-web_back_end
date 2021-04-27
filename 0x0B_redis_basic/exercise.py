@@ -5,7 +5,7 @@
 import redis
 import uuid
 
-from typing import Tuple
+from typing import Union
 
 
 class Cache:
@@ -18,7 +18,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data: Tuple[str, bytes, int, float]) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         store - method that stores data in a redis instance
         Args:
