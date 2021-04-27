@@ -16,6 +16,7 @@ class Cache:
         """ Class constructor
         """
         self._redis = redis.Redis()
+        self._redis.flushdb()
 
     def store(self, data: Tuple[str, bytes, int, float]) -> str:
         """
@@ -27,4 +28,4 @@ class Cache:
         """
         random_key = str(uuid.uuid4())
         self._redis.mset({random_key: data})
-        return random_value
+        return random_key
