@@ -2,7 +2,6 @@
 """ Web Cache and Tracker module """
 
 
-from time import sleep
 import redis
 import requests
 from typing import Callable
@@ -44,16 +43,3 @@ def get_page(url: str) -> str:
     """
     page = requests.get(url).text
     return page
-
-
-if __name__ == "__main__":
-    url = 'https://dog.ceo'
-    req = get_page(url)
-    sleep(3)
-    req2 = get_page(url)
-    sleep(2)
-    req3 = get_page(url)
-    sleep(1)
-    req4 = get_page(url)
-    sleep(6)
-    req5 = get_page(url)
