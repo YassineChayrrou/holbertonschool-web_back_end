@@ -45,6 +45,31 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
+def replay(method: Callable) -> None:
+    """
+    replay - shows history of called method
+    Args:
+        - method: Callable, the method we want to check it's history
+    Return:
+        - None, prints formatted string of history
+    """
+    key = method.__qualname__
+
+    counts = method.__self__.get_int(key)
+    inputs = method.__qualname__ + ":inputs"
+    outputs = method.__qualname__ + ":outputs"
+
+    inputs_list = map(lambda y: y.decode(),
+                      method.__self__._redis.lrange(inputs, 0, -1))
+
+    outputs_list = map(lambda y: y.decode(),
+                       method.__self__._redis.lrange(outputs, 0, -1))
+
+    print(f"{key} was called {counts} times:")
+    for i, j in zip(inputs_list, outputs_list):
+        print(f"{key}(*{i}) -> {j}")
+
+
 class Cache:
     """ Cache class
         description: stores cache data using redis
