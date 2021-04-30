@@ -4,44 +4,45 @@
 
 import redis
 import requests
-from time import sleep
 from typing import Callable
 from functools import wraps
 
 
-_redis = redis.Redis()
+reds = redis.Redis()
 
 
-def url_cache(fn: Callable) -> Callable:
+def count_url_reqs(fn: Callable) -> Callable:
     """
     url_cache - counts requests of a url and cache the response on redis
                 instance.
     Args:
         - fn: Callable, function to pass and count how many times its invoked
     Return:
-        - returns HTML from cache is cache is not expired
+        - returns HTML from cache if not expired
     """
     @wraps(fn)
     def wrapper(url):
         key = "count:{}".format(url)
         cache = "cache:{}".format(url)
-        response = _redis.get(cache)
+        response = reds.get(cache)
 
-        _redis.incr(key, 1)
         if response:
-            print("returned from cache")
             return response
+        reds.incr(key, 1)
         output = fn(url)
-        _redis.setex(cache, 10, output)
-        print("returned through api")
+        reds.setex(cache, 10, output)
         return fn(url)
     return wrapper
 
 
-@url_cache
+@count_url_reqs
 def get_page(url: str) -> str:
     """
     get_page - gets html of requested url
+    Args:
+        - url: str, website url
+    Return:
+        - html content of response
     """
-    page = requests.get(url).text
-    return page
+    page = requests.get(url)
+    return page.text
