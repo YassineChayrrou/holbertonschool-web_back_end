@@ -13,14 +13,15 @@ Note: in the industry we use a model or framework that do that which is reliable
 
 ## Learning Objectives:
 
-
 - What authentication means
 - What Base64 is
 - How to encode a string in Base64
 - What Basic authentication means
 - How to send the Authorization header
 
-## Notes:
+## Extras:
+
+**Documentation of simple api:**
 
 ### Simple API
 

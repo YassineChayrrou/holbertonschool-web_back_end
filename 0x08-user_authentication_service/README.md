@@ -24,12 +24,15 @@ At the end of this project, we are expected to be able to explain to anyone, wit
 - How to retrieve request form data
 - How to return various HTTP status codes
 
-# setup:
+## Extras:
 
-we need to install bcrypt and sqlalchemy
+you need to install bcrypt and sqlalchemy
 ```
 pip3 install bcrypt
 ```
 ```
 pip3 install SQLAlchemy
 ```
+
+## Author:
+Yassine Chayrrou

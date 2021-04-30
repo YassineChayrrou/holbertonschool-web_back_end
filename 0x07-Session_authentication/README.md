@@ -21,6 +21,10 @@ At the end of this project, we are expected to be able to explain to anyone, wit
 - How to send Cookies
 - How to parse Cookies
 
-## Notes:
+## Extras:
 
 check **SIMPLE API** documentation on prior project README.md <a href="https://github.com/YassineChayrrou/holbertonschool-web_back_end/tree/main/0x06-Basic_authentication#readme" target="_blank">here</a>
+
+## Author:
+
+Yassine Chayrrou
