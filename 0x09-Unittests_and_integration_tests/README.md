@@ -31,5 +31,9 @@ At the end of this project,we are expected to be able to explain to anyone, with
 
 Unittest : a python unit test framework
 
-## Notes:
+## Extras:
 ...
+
+## Author:
+
+Yassine Chayrrou
