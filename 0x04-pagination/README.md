@@ -1,7 +1,12 @@
 # 0x04. Pagination
 
-introduction to pagination and implementation
+Introduction to pagination and implementation of csv file pagination using python.
 
+**Definition:**
+
+Pagination is used in some form in almost every web application to divide returned data and display it on multiple pages within one web page. Pagination also includes the logic of preparing and displaying the links to the various pages. Pagination can be handled client-side or server-side.
+
+In this project i practice the concepts learned of pagination on csv files
 ## Resources:
 
 **Read or watch:**

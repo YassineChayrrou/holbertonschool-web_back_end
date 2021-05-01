@@ -1,6 +1,6 @@
 # 0x03-caching
 
-Introduction to caching systems and implimentation of different ones
+Introduction to caching systems and implimentation of different caching algorithms using python
 
 ## Resources:
 
