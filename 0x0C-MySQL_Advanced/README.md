@@ -28,8 +28,16 @@ In this projects we learn about:
 
 ## Extras:
 
-...
-
+- useful operators for matching in mysql:
+    - we note that using these operators lowers the performance of indexing in db
+    - `LIKE` operator used with WHERE
+```
+SELECT * FROM db WHERE style LIKE "%Glam rock%"
+```
+    - `REGEXP` operator same as like but for matching using regex
+```
+SELECT * FROM db WHERE style REGEXP '.*Glam rock.*'
+```
 
 ## Author
 - Yassine Chayrrou
