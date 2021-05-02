@@ -2,7 +2,7 @@
 -- listing is ranked by longevity
 SELECT
 band_name,
-IFNULL(split, CURRENT_DATE()) - formed AS lifespan
+IFNULL(split, 2020) - formed AS lifespan
 FROM metal_bands
 WHERE style REGEXP '.*Glam rock.*'
 ORDER BY lifespan DESC;
