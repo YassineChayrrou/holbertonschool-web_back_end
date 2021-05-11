@@ -1,0 +1,2 @@
+// MongoDB command that inserts a new document
+db.school.insertOne({"name": "Holberton school"})
