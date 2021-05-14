@@ -56,7 +56,8 @@ class Auth:
             - password: str, takes user password
         Return:
             - User instance after registration
-            - raise a ValueError if user already exists
+        Exception:
+            - raises ValueError if user already exists
         """
         try:
             self._db.find_user_by(email=email)
