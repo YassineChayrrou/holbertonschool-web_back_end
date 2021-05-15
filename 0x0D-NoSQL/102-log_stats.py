@@ -26,10 +26,10 @@ def log_stats(mongo_collection) -> None:
     LOGS = mongo_collection.count_documents({})
     pipeline = [
             {
-                "$group": {"_id": "$ip", "count": {"$sum": 1}}
+                "$group": {"_id": "$ip", "total": {"$sum": 1}}
             },
             {
-                "$sort": {"count": -1, "_id": -1}
+                "$sort": {"total": -1}
             },
             {
                 "$limit": 10
@@ -48,7 +48,7 @@ def log_stats(mongo_collection) -> None:
     print("IPs:")
     for ip in IP_LIST:
         if ip['_id']:
-            print(f"\t{ip.get('_id')}: {ip.get('count')}")
+            print(f"\t{ip.get('_id')}: {ip.get('total')}")
 
 
 if __name__ == "__main__":
