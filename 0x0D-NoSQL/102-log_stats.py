@@ -47,8 +47,7 @@ def log_stats(mongo_collection) -> None:
     print(f"{STATUS} status check")
     print("IPs:")
     for ip in IP_LIST:
-        if ip['_id']:
-            print(f"\t{ip.get('_id')}: {ip.get('total')}")
+        print(f"\t{ip.get('_id')}: {ip.get('total')}")
 
 
 if __name__ == "__main__":
