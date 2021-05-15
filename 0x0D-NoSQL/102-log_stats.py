@@ -29,7 +29,7 @@ def log_stats(mongo_collection) -> None:
                 "$group": {"_id": "$ip", "count": {"$sum": 1}}
             },
             {
-                "$sort": {"count": -1}
+                "$sort": {"count": -1, "_id": -1}
             },
             {
                 "$limit": 10
