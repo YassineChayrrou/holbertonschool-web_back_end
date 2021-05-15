@@ -35,7 +35,7 @@ def log_stats(mongo_collection) -> None:
                 "$limit": 10
             }
         ]
-    IP_LIST = list(mongo_collection.aggregate(pipeline))
+    IP_LIST = mongo_collection.aggregate(pipeline)
 
     print(f"{LOGS} logs")
     print("Methods:")
