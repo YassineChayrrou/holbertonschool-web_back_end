@@ -14,6 +14,7 @@ class Config:
 
     LANGUAGES = ["en", "fr"]
 
+
 app.config['BABEL_DEFAULT_LOCALE'] = Config.LANGUAGES[0]
 
 
