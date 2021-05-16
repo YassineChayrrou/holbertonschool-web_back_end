@@ -1,0 +1,27 @@
+# 0x0A. i18n
+
+Internationalization and localization sometimes shortened to I18N.
+I18N presents the design and development of a product, application or document content that enables easy localization for target audience that vary in culture, region, or language.
+
+
+## Resources:
+
+**Read or watch:**
+- <a href="https://flask-babel.tkte.ch/" target="_blank">Flask-Babel</a>
+- <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiii-i18n-and-l10n" target="_blank">Flask i18n tutorial</a>
+- <a href="http://pytz.sourceforge.net/" target="_blank">pytz</a>
+
+## Learning Objectives:
+
+
+- Learn how to parametrize Flask templates to display different languages
+- Learn how to infer the correct locale based on URL parameters, user settings or request headers
+- Learn how to localize timestamps
+
+## Extras:
+
+...
+
+## Author:
+
+Yassine Chayrrou
