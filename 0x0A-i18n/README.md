@@ -20,7 +20,14 @@ I18N presents the design and development of a product, application or document c
 
 ## Extras:
 
-...
+requirements:
+- flask and flask_babel
+
+```
+pip3 install flask
+pip3 install flask_babel
+```
+
 
 ## Author:
 
