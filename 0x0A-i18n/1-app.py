@@ -5,8 +5,6 @@
 from flask import Flask, render_template
 from flask_babel import Babel
 
-app = Flask(__name__)
-
 
 class Config:
     """Babel Config class"""
@@ -14,6 +12,7 @@ class Config:
     TIMEZONE = "UTC"
 
 
+app = Flask(__name__)
 app.config['BABEL_DEFAULT_LOCALE'] = Config.LANGUAGES[0]
 app.config['BABEL_DEFAULT_TIMEZONE'] = Config.TIMEZONE
 babel = Babel(app)
