@@ -35,11 +35,11 @@ def get_user():
 
 
 @app.before_request
-def before_request_function():
+def before_request_func():
+    """ sets user as flask global """
     user = get_user()
     if user:
         g.user = user
-    print(user)
 
 
 @app.route("/")
