@@ -35,7 +35,7 @@ def get_user():
 
 
 @app.before_request
-def before_request_func():
+def before_request():
     """ sets user as flask global """
     user = get_user()
     if user:
