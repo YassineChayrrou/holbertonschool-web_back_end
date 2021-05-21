@@ -64,7 +64,7 @@ def get_locale():
 
 
 @babel.timezoneselector
-def get_timezone():
+def get_timezone() -> str:
     """ returns user timezone """
     try:
         URL_TIMEZONE = request.args.get('timezone')
