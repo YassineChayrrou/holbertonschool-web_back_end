@@ -12,6 +12,7 @@ ES6 basics with basic initial setup of nodejs and linter software, in this proje
 - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters" target="_blank">Default parameters</a>
 - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters" target="_blank">Rest parameter</a>
 - <a href="https://towardsdatascience.com/javascript-es6-iterables-and-iterators-de18b54f4d4" target="_blank">Javascript ES6 — Iterables and Iterators</a>
+- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax" target="_blank">Javascript Spread Operator</a>
 
 ## Learning objectives:
 
