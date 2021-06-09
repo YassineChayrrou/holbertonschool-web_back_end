@@ -12,5 +12,5 @@ export default async function handleProfileSignup(firstName, lastName, fileName)
     status: 'rejected',
     value: error.toString(),
   }));
-  return array.push(signedUser, profilePhoto);
+  return [signedUser, profilePhoto];
 }
