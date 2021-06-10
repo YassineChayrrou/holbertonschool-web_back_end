@@ -1,13 +1,12 @@
-import Car from './10-car';
+import Car from '10-car';
 
 export default class EVCar extends Car {
-  constructor(brand, motor, color, range) {
+  constructor (brand, motor, color, range) {
     super(brand, motor, color);
     this._range = range;
   }
 
-  // return Object.assign(new Car(), this.constructor)
-  static get [Symbol.species]() {
-    return Car;
+  cloneCar() {
+    return Object.assign(new Car(), this.constructor)
   }
 }
